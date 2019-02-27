@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/mainStyle.css" />
+    <title>Изменение параметров оборудования</title>
+</head>
+<body> 
+    
+    <form class="block" method="post">
+        @foreach (var equipment in Model)
+        {
+
+            <h3>Изменение параметров оборудования</h3>
+
+            <div class="inputBlock">
+                <p>Наименование: </p>
+                <input type="text" name="Name" value="@equipment.Name" />
+            </div>
+
+            <div class="inputBlock">
+                <p>Производитель: </p>
+                <input type="text" name="Manufacturer" value="@equipment.Manufacturer" />
+            </div>
+
+            <div class="inputBlock">
+                <p>Дата ввода в экспулатацию: </p>
+                <input type="date" name="StartingDate" value="@equipment.StartingDate" />
+            </div>
+
+            <div class="inputBlock">
+                <p>Верхняя граница допустимого давления: </p>
+                <input type="number" step="any" name="AllowablePressure" value="@equipment.AllowablePressure" />
+            </div>
+
+            <input class="button" type="submit" value="Изменить" />
+
+
+        }
+    </form>
+    
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<GasEquipments.Models.Equipment>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Газораспределительные оборудования</title>
+    <link rel="stylesheet" href="~/css/mainStyle.css" />
+</head>
+<body>
+    <h2>Учёт оборудования</h2>
+    <form method="post">
+        <div class="TableBlock">
+            <h3>Список газораспределительных оборудований</h3>
+
+            <table>
+                <tr>
+                    <td>Идентификатор</td>
+                    <td>Наименование</td>
+                    <td>Производитель</td>
+                    <td>Дата ввода в экспулатацию</td>
+                    <td>Верхняя граница допустимого давления</td>
+                </tr>
+
+                @foreach (var equipment in Model)
+                {
+                    <tr>
+                        <td>@equipment.Id</td>
+                        <td>@equipment.Name</td>
+                        <td>@equipment.Manufacturer</td>
+                        <td>@equipment.StartingDate</td>
+                        <td>@equipment.AllowablePressure</td>
+                        <td><a href="~/Home/ChangeEquipment/@equipment.Id">Изменить</a></td>
+                        <td><a href="~/Home/Measurements/@equipment.Id">Измерения</a></td>
+                    </tr>
+                }
+                <tr></tr>
+            </table>
+
+
+
+        </div>
+        <div class="block">
+            <h3>Добавление оборудования</h3>
+
+            <div class="inputBlock">
+                <p>Наименование: </p>
+                <input type="text" name="Name" />
+            </div>
+
+            <div class="inputBlock">
+                <p>Производитель: </p>
+                <input type="text" name="Manufacturer" />
+            </div>
+
+            <div class="inputBlock">
+                <p>Дата ввода в экспулатацию: </p>
+                <input type="date" name="StartingDate" />
+            </div>
+
+            <div class="inputBlock">
+                <p>Верхняя граница допустимого давления: </p>
+                <input type="number" step="any" name="AllowablePressure" />
+            </div>
+
+            <input class="button" type="submit" value="Добавить" />
+        </div>
+    </form>
+</body>
+</html>

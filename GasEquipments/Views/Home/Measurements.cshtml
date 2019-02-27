@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Измерения</title>
+    <link rel="stylesheet" href="~/css/mainStyle.css" />
+</head>
+<body>
+
+    <div class="block">
+        <h3>Измерения оборудования</h3>
+
+        <form method="post">
+
+            <input type="hidden" value="@ViewBag.EquipmentId" name="EquipmentId" />
+
+            <table>
+
+                <tr>
+                    <td>Дата измерения</td>
+                    <td>Давление</td>
+                    <td>Температура</td>
+                </tr>
+
+                @foreach (var measurement in Model)
+                {
+                    <tr>
+                        <td>@measurement.Date</td>
+                        <td>@measurement.Pressure</td>
+                        <td>@measurement.Temperature</td>
+                    </tr>
+                }
+
+                <tr>
+                    <td><input type="date" name="Date" /></td>
+                    <td><input type="number" name="Pressure" /></td>
+                    <td><input type="number" step="any" name="Temperature" /></td>
+                    <td><input type="submit" value="Добавить" /></td>
+                </tr>
+
+            </table>
+
+        </form>
+    </div>
+
+</body>
+</html>
